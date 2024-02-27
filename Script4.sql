@@ -4,5 +4,5 @@
 -- на данный момент (OnOrderQty).
 
 SELECT "ProductID", MIN("MinOrderQty") AS "MinOrderQty", MAX("MaxOrderQty") AS "MaxOrderQty", SUM("OnOrderQty") AS "TotalOnOrderQty"
-FROM "Purchasing"."ProductVendor"
+FROM "Purchasing"."ProductVendor" where "OnOrderQty" is not null
 GROUP BY "ProductID";
