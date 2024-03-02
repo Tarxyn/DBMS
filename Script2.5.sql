@@ -1,6 +1,10 @@
--- 5.	Вывести ProductID из таблицы Production.ProductListPriceHistory у которых максимальная цена (ListPrice) больше 24. 
--- Добавить столбец с рангом, определяя его порядок в зависимости от количества строк, содержащих максимальную цену. (Использовать RANK).
+-- Вывести Color, Class и максимальную цену товара 
+-- ListPrice для каждого цвета Color с разными классами Class, 
+-- предусмотреть вывод максимальной цены ListPrice для всех 
+-- Color у различных Class из таблицы Production.Product
+-- (Использовать ROOLUP).
 
- select "ProductID", RANK() OVER(ORDER BY count("ProductID") DESC), count("ProductID") as "Count"  
-from "Production"."ProductListPriceHistory" where "ListPrice" > 24 group by "ProductID";
+SELECT "Color", "Class", MAX("ListPrice") AS MaxPrice
+FROM "Production"."Product"
+GROUP BY ROLLUP("Color", "Class");
 
