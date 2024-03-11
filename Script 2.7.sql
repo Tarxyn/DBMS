@@ -5,6 +5,6 @@
 --использовать GROUPING SETS. Отделить строки, 
 --созданные с помощью агрегатных функций от строк из фактической таблицы
 
-SELECT "Color", "Class", MAX("ListPrice") AS MaxPrice
+SELECT "Color", "Class", MAX("ListPrice") AS MaxPrice, GROUPING("Color", "Class") AS grouping
 FROM "Production"."Product"
 GROUP BY GROUPING SETS (("Color"), ("Class"), ());
