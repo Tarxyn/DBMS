@@ -4,7 +4,6 @@
 
 SELECT "ProductID"
 FROM "Production"."Product"
-WHERE "ProductID" NOT IN (
-    SELECT "ProductID"
-    FROM "Production"."TransactionHistoryArchive"
-);
+EXCEPT
+SELECT "ProductID"
+FROM "Production"."TransactionHistoryArchive";
