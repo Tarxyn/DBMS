@@ -1,0 +1,3 @@
+ALTER TABLE "Clients"
+ALTER COLUMN "Discount"
+SET DEFAULT 0;

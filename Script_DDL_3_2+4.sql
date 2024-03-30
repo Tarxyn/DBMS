@@ -1,0 +1,3 @@
+ALTER TABLE "Store" 
+ALTER COLUMN "Name"
+SET NOT NULL;

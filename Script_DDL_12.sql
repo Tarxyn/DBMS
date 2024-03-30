@@ -1,0 +1,3 @@
+ALTER TABLE "Store" 
+ALTER COLUMN "address"
+TYPE VARCHAR(50);
