@@ -1,3 +1,5 @@
+-- Написать скрипт, который удаляет дубликаты.
+
 DELETE
 FROM "Clients4" 
 WHERE ctid NOT IN
