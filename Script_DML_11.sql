@@ -1,3 +1,5 @@
+-- В отдельном файле написать скрипт, который показывает работу с оператором MERGE.
+
 MERGE INTO "SourceTable" AS Source
 USING "TargetTable" AS Target
  ON (Source."ID" = Target."ID")
