@@ -1,0 +1,2 @@
+DELETE
+FROM "Clients3";
