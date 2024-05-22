@@ -7,13 +7,13 @@ SELECT
     i."Count_item" as quantity,
     o."Sale_date" as sale_date
 FROM
-    "Order" o
+    "Orders" o
 JOIN
     "Clients" c ON o."ID_Client" = c."ID"
 JOIN
-    "Item" i ON o."ID_Item" = i."ID"
+    "Items" i ON o."ID_Item" = i."ID"
 JOIN
-    "Product" p ON i."ID_product" = p."ID"
+    "Products" p ON i."ID_product" = p."ID"
 
 --Вызов представления view
 SELECT * FROM "product_sales" 
