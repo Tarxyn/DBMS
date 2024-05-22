@@ -1,5 +1,5 @@
 -- таблица "Продукт"
-create table "Product"(
+create table "Products"(
 	"ID" SERIAL PRIMARY KEY
 	,"Name" Varchar(255) NOT NULL
 );
