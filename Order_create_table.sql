@@ -1,8 +1,8 @@
 -- таблица "Заказ"
-create table "Order" (
+create table "Orders" (
 	"ID" SERIAL PRIMARY KEY
-	,"ID_Client" INT NOT NULL REFERENCES "Clients"("ID")
-	,"ID_Item" INT NOT NULL REFERENCES "Item"("ID")
+	,"ID_Client" INT NOT NULL
+	,"ID_Item" INT NOT NULL
 	,"Cost" DECIMAL(10, 2) NOT NULL
 	,"Count" INT NOT null
 	,"Max_count" Int not null
@@ -11,13 +11,25 @@ create table "Order" (
 
 
 -- Создание внешнего ключа между двумя таблицами
-ALTER TABLE "Order"
-ADD CONSTRAINT FK_Order_Item
+ALTER TABLE "Orders"
+ADD CONSTRAINT FK_Orders_Item_Count
 FOREIGN KEY ("Max_count")
-REFERENCES "Item"("Count_item");
+REFERENCES "Items"("Count_item");
+
+-- Создание внешнего ключа между двумя таблицами
+ALTER TABLE "Orders"
+ADD CONSTRAINT FK_Orders_Item_ID
+FOREIGN KEY ("ID_Item")
+REFERENCES "Items"("ID");
+
+-- Создание внешнего ключа между двумя таблицами
+ALTER TABLE "Orders"
+ADD CONSTRAINT FK_Orders_Clients
+FOREIGN KEY ("ID_Client")
+REFERENCES "Clients"("ID");
 
 
 --Создание условия что кол-во в заказе не должно быть меньше 0 и более чем на складе
-ALTER TABLE "Order"
-ADD CONSTRAINT CH_Order_Count
+ALTER TABLE "Orders"
+ADD CONSTRAINT CH_Orders_Count
 CHECK ("Count" >= 0 AND "Count" <= "Max_count");
