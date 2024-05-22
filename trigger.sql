@@ -7,9 +7,9 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER delete_orders_trigger
-AFTER DELETE ON "Order"
+AFTER DELETE ON "Orders"
 FOR EACH ROW
 EXECUTE FUNCTION on_delete_orders();
 
 -- Проверка триггера
-DELETE FROM "Order" WHERE "ID" = 4;
+DELETE FROM "Orders" WHERE "ID" = 4;
