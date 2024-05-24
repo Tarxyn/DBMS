@@ -1,6 +1,14 @@
 --2.	Выдать ассортимент товара, заказанного данным магазином:
-SELECT p."ID", p."Name", o."Cost", i."Count_item" as quantity
-FROM "Products" p
-JOIN "Items" i ON p."ID" = i."ID_product"
-JOIN "Orders" o ON i."ID" = o."ID_Item"
-WHERE o."ID_Item" = 2;
+CREATE OR REPLACE PROCEDURE GetItemsOrdersByStore(ID_product INT)
+LANGUAGE plpgsql as $$
+begin
+	
+    PERFORM p."ID", p."Name", o."Cost", i."Count_item" as quantity
+	FROM "Products" p
+	JOIN "Items" i ON p."Name" = i."ID_product"
+	JOIN "Orders" o ON i."ID" = o."Vendor_Code"
+	WHERE o."Vendor_Code" = ID_product;
+END;
+$$;
+
+call GetItemsOrdersByStore(3);
