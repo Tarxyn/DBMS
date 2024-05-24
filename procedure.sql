@@ -1,11 +1,11 @@
 -- Процедура "Сумма покупок клиентов"
 
-CREATE PROCEDURE get_total_sales()
+CREATE OR REPLACE PROCEDURE get_total_sales()
 AS $$
 BEGIN
 PERFORM c."Name" AS client_name, SUM(o."Cost" * o."Count") AS total_sales
 FROM "Orders" o
-JOIN "Clients" c ON o."ID_Client" = c."ID"
+JOIN "Clients" c ON o."ID_Client" = c."Name"
 GROUP BY c."Name";
 END;
 $$ LANGUAGE plpgsql;
