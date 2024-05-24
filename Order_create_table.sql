@@ -5,6 +5,5 @@ create table "Orders" (
 	,"Vendor_Code" INT NOT NULL
 	,"Cost" DECIMAL(10, 2) NOT NULL
 	,"Count" INT NOT null
-	,"Max_count" Int not null
 	,"Sale_date" DATE NOT NULL
 );
