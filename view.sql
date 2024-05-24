@@ -1,5 +1,5 @@
 -- Представление "Продажи товаров"
-CREATE VIEW "product_sales" as
+CREATE OR REPLACE VIEW "product_sales" as
 SELECT
     o."ID" as order_id,
     c."Name" as client_name,
@@ -9,11 +9,11 @@ SELECT
 FROM
     "Orders" o
 JOIN
-    "Clients" c ON o."ID_Client" = c."ID"
+    "Clients" c ON o."ID_Client" = c."Name"
 JOIN
-    "Items" i ON o."ID_Item" = i."ID"
+    "Items" i ON o."Vendor_Code" = i."ID"
 JOIN
-    "Products" p ON i."ID_product" = p."ID"
+    "Products" p ON i."ID_product" = p."Name"
 
 --Вызов представления view
 SELECT * FROM "product_sales" 
