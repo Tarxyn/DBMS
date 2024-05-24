@@ -1,2 +1,11 @@
 --4.	Показывать список клиентов, имеющих скидку:
-SELECT * FROM "Clients" WHERE "Discount"  > 0;
+CREATE OR REPLACE PROCEDURE GetListClientsWithDiscount(minDiscount INT)
+LANGUAGE plpgsql as $$
+begin
+    perform  * 
+    FROM "Clients"
+    WHERE "Discount" > minDiscount;
+END;
+$$;
+
+call GetListClientsWithDiscount(0);
